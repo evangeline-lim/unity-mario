@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class PlayerController : MonoBehaviour
 {
@@ -69,22 +70,7 @@ public class PlayerController : MonoBehaviour
         {
             Debug.Log("Collided with Gomba!");
             
-            //TODO: end the game
-            MenuController menuController = gameObject.AddComponent<MenuController>();
-            menuController.DisplayMenu();
-            
-            Debug.Log("display menu");
-            foreach (Transform eachChild in transform)
-            {
-                    Debug.Log("Finding child: " + eachChild.name);
-                if (eachChild.name != "Score")
-                {
-                    Debug.Log("Child found. Name: " + eachChild.name);
-                    // disable them
-                    eachChild.gameObject.SetActive(true);
-                    Time.timeScale = 1.0f;
-                }
-            }
+            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         }
     }
 
