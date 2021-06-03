@@ -376,7 +376,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 150
   maxSpeed: 5
-  upSpeed: 25
+  upSpeed: 30
   enemyLocation: {fileID: 1891673641}
   scoreText: {fileID: 1589886320}
 --- !u!61 &391253206
