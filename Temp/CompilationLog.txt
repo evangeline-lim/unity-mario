@@ -1,6 +1,0 @@
-# Starting compiling Assembly-CSharp.dll
-<<<<<<< Updated upstream
-/Applications/Unity/Unity.app/Contents/Tools/RoslynScripts/unity_csc.sh /noconfig @Temp/UnityTempFile-c51b10302fcbd4cf5bc58f049d72bdb1
-=======
-/Applications/Unity/Unity.app/Contents/Tools/RoslynScripts/unity_csc.sh /noconfig @Temp/UnityTempFile-3e477087571834ec2bb6cef9b509a1dd
->>>>>>> Stashed changes

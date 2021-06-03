@@ -8,3 +8,7 @@
 !.vscode/extensions.json
 
 .DS_Store
+
+Assembly-CSharp.csproj
+Library/*
+Temp/*
