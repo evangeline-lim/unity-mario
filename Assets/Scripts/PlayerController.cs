@@ -23,12 +23,17 @@ public class PlayerController : MonoBehaviour
     private int score = 0;
     private bool countScoreState = false;
 
+    private Animator marioAnimator;
+    private AudioSource marioAudio;
+
     void Start()
     {
         // Set to be 30 FPS
         Application.targetFrameRate =  30;
         marioBody = GetComponent<Rigidbody2D>();
         marioSprite = GetComponent<SpriteRenderer>();
+        marioAnimator = GetComponent<Animator>();
+        marioAudio = GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -54,6 +59,14 @@ public class PlayerController : MonoBehaviour
               score++;
               Debug.Log(score);
           }
+        }
+
+        // Animation handling
+        marioAnimator.SetFloat("xSpeed", Mathf.Abs(marioBody.velocity.x));
+        marioAnimator.SetBool("onGround", onGroundState);
+        // TODO check this
+        if (Mathf.Abs(marioBody.velocity.x) > 1.0) {
+            marioAnimator.SetTrigger("onSkid");
         }
     }
 
@@ -98,6 +111,10 @@ public class PlayerController : MonoBehaviour
             
             SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         }
+    }
+
+    void PlayJumpSound(){
+	    marioAudio.PlayOneShot(marioAudio.clip);
     }
 
 }
