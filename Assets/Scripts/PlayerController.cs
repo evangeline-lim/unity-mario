@@ -43,11 +43,19 @@ public class PlayerController : MonoBehaviour
         if (Input.GetKeyDown("a") && faceRightState){
             faceRightState = false;
             marioSprite.flipX = true;
+
+            if (Mathf.Abs(marioBody.velocity.x) > 1.0) {
+                marioAnimator.SetTrigger("onSkid");
+            }
         }
 
         if (Input.GetKeyDown("d") && !faceRightState){
             faceRightState = true;
             marioSprite.flipX = false;
+
+            if (Mathf.Abs(marioBody.velocity.x) > 1.0) {
+                marioAnimator.SetTrigger("onSkid");
+            }
         }
 
         // when jumping, and Gomba is near Mario and we haven't registered our score
@@ -64,10 +72,7 @@ public class PlayerController : MonoBehaviour
         // Animation handling
         marioAnimator.SetFloat("xSpeed", Mathf.Abs(marioBody.velocity.x));
         marioAnimator.SetBool("onGround", onGroundState);
-        // TODO check this
-        if (Mathf.Abs(marioBody.velocity.x) > 1.0) {
-            marioAnimator.SetTrigger("onSkid");
-        }
+      
     }
 
     // FixedUpdate may be called once per frame. See documentation for details.
@@ -89,6 +94,7 @@ public class PlayerController : MonoBehaviour
         if (Input.GetKeyDown("space") && onGroundState){
             marioBody.AddForce(Vector2.up * upSpeed, ForceMode2D.Impulse);
             onGroundState = false;
+            marioAnimator.SetBool("onGround", onGroundState);
             countScoreState = true; //check if Gomba is underneath
         }
     }
@@ -98,8 +104,15 @@ public class PlayerController : MonoBehaviour
     {
         if (col.gameObject.CompareTag("Ground")) {
             onGroundState = true; // back on ground
+            marioAnimator.SetBool("onGround", onGroundState);
             countScoreState = false; // reset score state
             scoreText.text = "Score: " + score.ToString();
+        }
+
+        if (col.gameObject.CompareTag("Obstacles") && Mathf.Abs(marioBody.velocity.y) <0.01f) {
+            onGroundState = true; // back on ground
+            marioAnimator.SetBool("onGround", onGroundState);
+            countScoreState = false; // reset score state
         }
     }
         
