@@ -14,6 +14,8 @@ public class ConsumableMushroomController : MonoBehaviour
     {
         // Debug.Log("Mushroom started");
         consumableMushroom = GetComponent<Rigidbody2D>();
+        consumableMushroom.AddForce(Vector2.up*20, ForceMode2D.Impulse);
+
         RandomiseDirection();
         ComputeVelocity();
     }
@@ -53,5 +55,9 @@ public class ConsumableMushroomController : MonoBehaviour
             ComputeVelocity();
             MoveMushroom();
         }
+    }
+
+    void OnBecameInvisible(){
+        Destroy(consumableMushroom);	
     }
 }

@@ -97,6 +97,12 @@ public class PlayerController : MonoBehaviour
             marioAnimator.SetBool("onGround", onGroundState);
             countScoreState = true; //check if Gomba is underneath
         }
+
+        // reset game
+        if (Input.GetKeyDown("r")){
+            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        }
+
     }
   
     // called when the cube hits the floor
