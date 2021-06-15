@@ -9,6 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5937264023663220346}
+  - component: {fileID: 8984747185171952213}
   m_Layer: 0
   m_Name: HittableSimple
   m_TagString: Untagged
@@ -32,6 +33,23 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &8984747185171952213
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5937264023663220347}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 43eaafae019a242ca840ed2d62a783b8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rigidBody: {fileID: 5937264024030965877}
+  springJoint: {fileID: 5937264024030965878}
+  consummablePrefab: {fileID: 3759749592431030378, guid: f56dacda89cad49ef89a7ed45f2d25e4, type: 3}
+  spriteRenderer: {fileID: 5937264024030965879}
+  usedQuestionBox: {fileID: 21300054, guid: 855dc7396df3c4e49ac4d21234eac5e1, type: 3}
 --- !u!1 &5937264024030965874
 GameObject:
   m_ObjectHideFlags: 0
